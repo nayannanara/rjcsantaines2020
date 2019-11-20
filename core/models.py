@@ -184,13 +184,16 @@ class Encontrista(models.Model):
 
 class Equipe(models.Model):
     nome_equipe = models.CharField(max_length=40, null=False, blank=False, verbose_name='nome_equipe')
-    encontreiros = models.ForeignKey(Encontreiro, related_name='encontreiros',  blank=False, null=True, on_delete=models.CASCADE)
+    encontreiros = models.ManyToManyField(Encontreiro, related_name='encontreiros',  blank=False)
     qtd_participantes = models.IntegerField(null=True, verbose_name='qtd_participantes')
-    nome_coordenador = models.OneToOneField(Encontreiro, related_name='coordenador', on_delete=models.CASCADE, null=True)
+    nome_coordenador = models.ForeignKey(Encontreiro, related_name='coordenador', on_delete=models.CASCADE, null=True)
     nome_casal_ligacao = models.CharField(max_length=40, null=False, blank=False, verbose_name='nome_casal_ligacao')
 
     def __str__(self):
         return self.nome_equipe
+
+    def get_encontreiros(self):
+        return '\n'.join([str(p) for p in self.encontreiros.all()])
 
 
 class Circulo(models.Model):

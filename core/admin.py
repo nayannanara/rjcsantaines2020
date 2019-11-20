@@ -20,14 +20,12 @@ class EncontristaAdmin(admin.ModelAdmin):
     list_filter = ['data_cadastro', 'status']
 
 
-class InscricaoAdmin(admin.ModelAdmin):
-    search_fields = ('nome', 'descricao','preco')
-    list_display = ('nome', 'descricao','preco')
-    list_filter = ['created']
+class EquipeAdmin(admin.ModelAdmin):
+    list_display = ('nome_equipe', 'get_encontreiros')
 
 
 admin.site.register(Encontreiro, EncontreiroAdmin)
 admin.site.register(Encontrista, EncontristaAdmin)
-admin.site.register(Equipe)
+admin.site.register(Equipe, EquipeAdmin)
 admin.site.register(Circulo)
 admin.site.register(Contato)

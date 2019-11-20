@@ -26,69 +26,9 @@
 
 <body>
 
-<header>
-    <div class="header">
-        <nav class="navbar navbar-expand-lg navbar-light navbar-default" id="menu">
-          <a class="navbar-brand" href="#"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
-            <span class="navbar-toggler-icon" style="color: #fff"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'core_home' %}"><b>Home</b> <span class="sr-only"></span></a>
-              </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'produtos:lista_inscricoes' %}"><b>Inscrições</b> <span class="sr-only"></span></a>
-              </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'core_contato' %}"><b>Contato</b> <span class="sr-only"></span></a>
-              </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'core_login_admin' %}" target="_blank"><b>Secretaria</b> <span class="sr-only"></span></a>
-              </li>
-
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                 <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'checkout:cart_item' %}" style="color: #fff !important;">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                 width="26" height="26"
-                                 viewBox="0 0 172 172"
-                                 style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M4.75481,0c-3.64363,0.51683 -6.20192,3.90204 -5.6851,7.54567c0.51683,3.64363 3.90204,6.20192 7.54567,5.6851h22.94712c3.79868,0 5.01322,0.7494 5.99519,1.65385c0.98197,0.90445 2.22236,2.6875 3.30769,6.40865c2.22236,7.51983 31.00962,105.43269 31.00962,105.43269c0.05169,0.20673 0.12921,0.41346 0.20673,0.62019c0,0 7.33894,18.19231 25.84135,18.19231h51.88942c2.3774,0.02584 4.59976,-1.21454 5.8143,-3.28185c1.18871,-2.06731 1.18871,-4.59976 0,-6.66706c-1.21454,-2.06731 -3.4369,-3.30769 -5.8143,-3.28185h-51.88942c-9.76803,0 -13.64423,-9.92308 -13.64423,-9.92308c0,-0.02584 -0.95613,-3.07512 -1.03365,-3.30769h53.75c6.82212,0 9.89724,-5.71094 10.54327,-7.85577l23.77404,-51.0625c3.66947,-8.83774 1.75721,-20.46635 -11.78365,-20.46635h-95.92308c-1.11118,0 -2.32572,0.28426 -3.51442,0.62019c-2.3774,-8.08834 -6.1244,-21.11238 -6.61538,-22.74038c-1.39543,-4.72897 -3.23017,-9.17368 -7.02885,-12.61058c-3.79868,-3.4369 -9.04447,-4.96154 -14.88462,-4.96154h-22.94712c-0.20673,0 -0.41346,0 -0.62019,0c-0.20673,0 -0.41346,0 -0.62019,0c-0.20673,0 -0.41346,0 -0.62019,0zM63.67308,53.33654h27.90865v11.78365h-24.1875l-3.10096,-9.92308c-0.20673,-0.72356 -0.54267,-1.36959 -0.62019,-1.86058zM100.26442,53.33654h17.77885v11.78365h-17.77885zM126.72596,53.33654h30.59615c-0.07753,0.46515 -0.20673,0.87861 -0.41346,1.44712l-4.75481,10.33654h-25.42788zM70.08173,73.80288h21.5v11.16346h-17.98558zM100.26442,73.80288h17.77885v11.16346h-17.77885zM126.72596,73.80288h21.29327l-5.16827,11.16346h-16.125zM76.28365,93.64904h15.29808v11.78365h-10.95673c-0.25841,0 -0.41346,-0.07753 -0.62019,-0.20673zM100.26442,93.64904h17.77885v11.78365h-17.77885zM126.72596,93.64904h12.19712l-5.58173,11.78365h-6.61538zM92.61538,146.77885c-6.61538,0 -11.99038,5.375 -11.99038,11.99038c0,6.61538 5.375,11.99038 11.99038,11.99038c6.61538,0 11.99038,-5.375 11.99038,-11.99038c0,-6.61538 -5.375,-11.99038 -11.99038,-11.99038zM132.30769,146.77885c-6.61538,0 -11.99038,5.375 -11.99038,11.99038c0,6.61538 5.375,11.99038 11.99038,11.99038c6.61538,0 11.99038,-5.375 11.99038,-11.99038c0,-6.61538 -5.375,-11.99038 -11.99038,-11.99038z"></path></g></g></svg>
-                        </a>
-                    </li>
-                {% if user.is_authenticated %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'accounts:accounts_index' %}" style="color: #fff !important;"><b>Minha conta</b></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" id="admin" href="{% url 'core_logout' %}" style="color: #fff !important;"><b>Olá, {{ user }} | Sair</b></span></a>
-                </li>
-                {% else %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'core_login' %}" style="color: #fff !important;"><b>Entrar</b></a>
-                </li>
-                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'accounts:accounts_registro' %}" style="color: #fff !important;"><b>Inscrever-se</b></a>
-                </li>
-                {% endif %}
-            </ul>
-          </div>
-        </nav>
-    </div>
-</header>
-
 {% block container %}
 
 {% endblock %}
-<section>
-    <footer>
-         <div class="footer-copyright fixed text-center col-sm-12 col-md-12 col-12" id="rodapeinicial">
-               <p>&copy;Todos os direitos reservados - 2019 | RJC</p>
-         </div>
-    </footer>
-</section>
 
 </body>
 </html>

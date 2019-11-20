@@ -107,11 +107,11 @@
 <div id="inscricoes">
     <h3><b>INSCRIÇÕES</b></h3>
     <hr>
-    {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            {{ message }}
+    {% if success %}
+         <div class="alert alert-success">
+            Inscrição realizada com sucesso
         </div>
-    {% endfor %}
+    {% endif %}
     <div class="row" id="row-inscricao">
        <div class="nav flex-column nav-pills col-md-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <a class="nav-link active" id="inscricao-encontreiro" data-toggle="pill" href="#encontreiro" role="tab" aria-controls="v-pills-home" aria-selected="true">Encontreiro</a>

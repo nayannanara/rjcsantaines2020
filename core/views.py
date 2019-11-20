@@ -8,6 +8,7 @@ def home(request):
 
 
 def contato(request):
+    success = False
     if request.method == 'POST':
         contato = {}
         contato['nome'] = request.POST.get('nome')
@@ -16,7 +17,13 @@ def contato(request):
         contato['mensagem'] = request.POST.get('mensagem')
 
         Contato.objects.create(**contato)
-    return render(request, '_contato.html')
+        success = True
+    elif request.method == 'POST':
+        messages.error(request, 'Formulário inválido')
+    context = {
+        'success': success
+    }
+    return render(request, '_contato.html', context)
 
 
 def encontreiro_novo(request):
@@ -51,14 +58,16 @@ def encontreiro_novo(request):
 
         Encontreiro.objects.create(**encontreiro)
         success = True
-
+    elif request.method == 'POST':
+        messages.error(request, 'Formulário inválido')
     context = {
-        'success': success,
+        'success': success
     }
-    return render(request, 'index.html', context)
+    return render(request, 'confirm.html', context)
 
 
 def encontrista_novo(request):
+    success = False
     if request.method == 'POST':
         encontrista = {}
         encontrista['nome_apelido'] = request.POST.get('nome_apelido')
@@ -99,7 +108,13 @@ def encontrista_novo(request):
         encontrista['pergunta_jesus'] = request.POST.get('pergunta_jesus')
 
         Encontrista.objects.create(**encontrista)
-    return redirect('core_home')
+        success = True
+    elif request.method == 'POST':
+        messages.error(request, 'Formulário inválido')
+    context = {
+        'success': success,
+    }
+    return render(request, 'confirm.html', context)
 
 
 def login_admin(request):
