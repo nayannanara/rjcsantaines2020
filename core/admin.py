@@ -21,11 +21,21 @@ class EncontristaAdmin(admin.ModelAdmin):
 
 
 class EquipeAdmin(admin.ModelAdmin):
-    list_display = ('nome_equipe', 'get_encontreiros')
+    fields = ['equipe', 'encontreiros']
+    list_display = ['nome_equipe', 'get_encontreiros', 'qtd_participantes', 'nome_coordenador', 'nome_casal_ligacao']
+
+
+class CirculoAdmin(admin.ModelAdmin):
+    fields = ['circulo', 'encontristas']
+    list_display = ['nome_circulo', 'get_encontristas', 'qtd_participantes', 'lider_circulo', 'cor_equipe']
+
+
+class ContatoAdmin(admin.ModelAdmin):
+    list_display = ['nome', 'email', 'telefone']
 
 
 admin.site.register(Encontreiro, EncontreiroAdmin)
 admin.site.register(Encontrista, EncontristaAdmin)
 admin.site.register(Equipe, EquipeAdmin)
-admin.site.register(Circulo)
-admin.site.register(Contato)
+admin.site.register(Circulo, CirculoAdmin)
+admin.site.register(Contato, ContatoAdmin)

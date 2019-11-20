@@ -187,7 +187,7 @@ class Equipe(models.Model):
     encontreiros = models.ManyToManyField(Encontreiro, related_name='encontreiros',  blank=False)
     qtd_participantes = models.IntegerField(null=True, verbose_name='qtd_participantes')
     nome_coordenador = models.ForeignKey(Encontreiro, related_name='coordenador', on_delete=models.CASCADE, null=True)
-    nome_casal_ligacao = models.CharField(max_length=40, null=False, blank=False, verbose_name='nome_casal_ligacao')
+    nome_casal_ligacao = models.CharField(max_length=100, null=False, blank=False, verbose_name='nome_casal_ligacao')
 
     def __str__(self):
         return self.nome_equipe
@@ -198,13 +198,16 @@ class Equipe(models.Model):
 
 class Circulo(models.Model):
     nome_circulo = models.CharField(max_length=40, null=False, blank=False, verbose_name='nome_circulo')
-    encontristas = models.ForeignKey(Encontrista, blank=False, null=True, on_delete=models.CASCADE)
+    encontristas = models.ManyToManyField(Encontrista, blank=False)
     qtd_participantes = models.IntegerField(null=True, verbose_name='qtd_participantes')
-    lider_circulo = models.OneToOneField(Encontreiro, on_delete=models.CASCADE, null=True)
+    lider_circulo = models.ForeignKey(Encontreiro, on_delete=models.CASCADE, null=True)
     cor_equipe = models.CharField(max_length=20, null=False, blank=False, verbose_name='cor_equipe')
 
     def __str__(self):
         return self.nome_circulo
+
+    def get_encontristas(self):
+        return '\n'.join([str(p) for p in self.encontristas.all()])
 
 
 class Contato(models.Model):
