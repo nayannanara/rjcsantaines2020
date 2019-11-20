@@ -85,8 +85,6 @@ class Encontreiro(models.Model):
             fail_silently=False,
         )
 
-
-
     def __str__(self):
         return self.nome
 
