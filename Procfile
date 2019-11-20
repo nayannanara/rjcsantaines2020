@@ -1,1 +1,1 @@
-web: gunicorn rjcsantaines.wsgi --log-file -
+web: gunicorn inscricoes.wsgi --log-file -
