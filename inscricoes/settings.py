@@ -23,6 +23,7 @@ ALLOWED_HOSTS = ['localhost', 'rjcsantaines.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'widget_tweaks',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +104,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

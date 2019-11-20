@@ -78,12 +78,14 @@ class Encontreiro(models.Model):
             'Banco Caixa Econômica Federal\n'
             'Favorecida: Jessica Aline Souza Lima\n'
             'Informações importantes: Não serão aceitos depósitos em envelopes, sob pena de não ser reconhecida a inscrição\n'
-            'Depósitos apenas no terminal eletrônico, lotéricas e/ou transferências bancárias\n\n\n'
+            'Depósitos apenas de forma direta "boca do caixa", lotéricas e/ou transferências bancárias\n\n\n'
             'Att: Equipe de direção geral - RJC 2020',
             'rjcsantaines@gmail.com',
             [email],
             fail_silently=False,
         )
+
+
 
     def __str__(self):
         return self.nome
@@ -171,7 +173,7 @@ class Encontrista(models.Model):
                                                                      'Banco Caixa Econômica Federal\n'
                                                                      'Favorecida: Jessica Aline Souza Lima\n'
                                                                      'Informações importantes: Não serão aceitos depósitos em envelopes, sob pena de não ser reconhecida a inscrição\n'
-                                                                     'Depósitos apenas no terminal eletrônico, lotéricas e/ou transferências bancárias\n\n\n'
+                                                                     'Depósitos apenas de forma direta "boca do caixa", lotéricas e/ou transferências bancárias\n\n\n'
                                                                      'Att: Equipe de direção geral - RJC 2020',
             'rjcsantaines@gmail.com',
             [email],
@@ -199,7 +201,7 @@ class Equipe(models.Model):
 class Circulo(models.Model):
     nome_circulo = models.CharField(max_length=40, null=False, blank=False, verbose_name='nome_circulo')
     encontristas = models.ManyToManyField(Encontrista, blank=False)
-    qtd_participantes = models.IntegerField(null=True, verbose_name='qtd_participantes')
+    qtd_participantes = models.IntegerField(null=True,  verbose_name='qtd_participantes')
     lider_circulo = models.ForeignKey(Encontreiro, on_delete=models.CASCADE, null=True)
     cor_equipe = models.CharField(max_length=20, null=False, blank=False, verbose_name='cor_equipe')
 
