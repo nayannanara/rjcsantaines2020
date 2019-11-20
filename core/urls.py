@@ -1,6 +1,5 @@
 from django.urls import path, include
 from core import views
-from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns =[
     path('',views.home, name='core_home'),
