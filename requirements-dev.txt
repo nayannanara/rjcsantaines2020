@@ -3,6 +3,7 @@ dj-static==0.0.6
 Django==2.2.7
 django-widget-tweaks==1.4.5
 future==0.18.2
+gunicorn==20.0.0
 python-decouple==3.3
 pytz==2019.3
 sqlparse==0.3.0
