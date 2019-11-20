@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+    Contato | {{ block.super }}
+{% endblock %}
+<section class="container">
+    {% block messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% endblock %}
+</section>
+
+{% block container %}
+
+<section class="container">
+
+<form  class="answer" action="{% url 'core_contato' %}" method="POST" onSubmit="return confirm('Enviado com sucesso')">
+    {% csrf_token %}
+    <fieldset>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo" maxlength="40" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">E-mail</label>
+          <input type="text" class="form-control" name="email" id="email" placeholder="E-mail" maxlength="40" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="telefone">Telefone</label>
+          <input type="text" class="telefone form-control" name="telefone" id="telefone" placeholder="(00) 00000-0000" maxlength="15" required>
+        </div>
+        <div class="form-group col-md-6">
+        <label for="mensagem">Mensagem</label>
+        <textarea class="form-control" id="mensagem" name="mensagem" rows="3" placeholder="Deixe aqui sua mensagem" required></textarea>
+      </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button type="reset" class="btn btn-danger">Apagar</button>
+
+  </fieldset >
+</form>
+</section>
+
+{% endblock %}

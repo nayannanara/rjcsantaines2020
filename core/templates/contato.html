@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+    Contato | {{ block.super }}
+{% endblock %}
+<section class="container">
+    {% block messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% endblock %}
+</section>
+
+{% block container %}
+<section class="container">
+<div class="col-md-12 page-header">
+	<h3><b>FALE CONOSCO</b></h3>
+	<hr>
+	{% if success %}
+	<div class="alert alert-success" role="alert">
+		Mensagem enviada com sucesso
+	</div>
+	{% endif %}
+	<form class="form-horizontal" action="" method="post">
+		{% csrf_token %}
+
+		<fieldset>
+			{% for field in form %}
+			<div class="form-group{% if field.errors %} has-error {% endif %}">
+			  <label for="{{ field.auto_id }}" class="col-md-3 control-label">{{ field.label }}</label>
+			  <div class="col-md-9">
+				{% render_field field class='form-control' %}
+				  {% for error in field.errors %}
+				  <span class="help-block">{{ error }}</span>
+				  {% endfor %}
+			  </div>
+			</div>
+			{% endfor %}
+			<div class="form-group">
+			  <div class="col-md-9 col-md-offset-3">
+				<button type="submit" class="btn btn-primary">Enviar</button>
+			  </div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+	</section>
+{% endblock%}
