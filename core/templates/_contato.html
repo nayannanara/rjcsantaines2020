@@ -18,7 +18,7 @@
 
 <section class="container">
 
-<form  class="answer" action="{% url 'core_contato' %}" method="POST" onSubmit="return confirm('Enviado com sucesso')">
+<form  class="answer" action="{% url 'core_contato' %}" method="POST">
     {% csrf_token %}
     <fieldset>
       <div class="form-row">

@@ -38,6 +38,52 @@ class Encontreiro(models.Model):
     )
     data_cadastro = models.DateTimeField('Inscrito em', null=True, auto_now_add=True)
 
+    def save(self, *args, **kwargs):
+        nome = self.nome
+        email = self.email
+        celular = self.celular
+        data_nascimento = self.data_nascimento
+        cpf = self.cpf
+        estado_civil = self.estado_civil
+        facebook = self.facebook
+        estado_encontreiro = self.estado_encontreiro
+        cidade_encontreiro = self.cidade_encontreiro
+        nome_igreja = self.nome_igreja
+        pessoa_convite_enc = self.pessoa_convite_enc
+        ano_participacao = self.ano_participacao
+        equipes_trab = self.equipes_trab
+        qtd_participacoes = self.qtd_participacoes
+        msg = 'Nome: {0}\n'\
+              'Celular: {1}\n'\
+              'Data de nascimento: {2}\n'\
+              'CPF: {3}\n'\
+              'Estado civil: {4}\n'\
+              'Facebook: {5}\n'\
+              'Cidade: {6}\n'\
+              'Estado: {7}\n'\
+              'Igreja: {8}\n'\
+              'Padrinho: {9}\n'\
+              'Ano que participou: {10}\n'\
+              'Equipes que trabalhou: {11}\n'\
+              'Quantidade de participações: {12}\n'\
+            .format(nome, celular, data_nascimento, cpf, estado_civil, facebook,
+                    cidade_encontreiro, estado_encontreiro, nome_igreja, pessoa_convite_enc,
+                    ano_participacao, equipes_trab, qtd_participacoes)
+        super(Encontreiro, self).save(*args, **kwargs)
+        send_mail(
+            'INSCRIÇÃO ENCONTREIRO - RJC 2020',
+            'Recebemos seus dados em nosso banco de dados\n' + msg + '\n\nPara concluir a inscrição, por favor efetuar o pagamento\n'
+            'Dados bancários: \n'
+            'Agência: 0768\nTipo de conta: 013\nConta: 00045215-5\n'
+            'Banco Caixa Econômica Federal\n'
+            'Favorecida: Jessica Aline Souza Lima\n'
+            'Informações importantes: Não serão aceitos depósitos em envelopes, sob pena de não ser reconhecida a inscrição\n'
+            'Depósitos apenas no terminal eletrônico, lotéricas e/ou transferências bancárias\n\n\n'
+            'Att: Equipe de direção geral - RJC 2020',
+            'rjcsantaines@gmail.com',
+            [email],
+            fail_silently=False,
+        )
 
     def __str__(self):
         return self.nome
@@ -91,6 +137,46 @@ class Encontrista(models.Model):
     )
 
     data_cadastro = models.DateTimeField('Inscrito em', null=True, auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        nome_apelido = self.nome_apelido
+        data_nascimento_enc = self.data_nascimento_enc
+        cpf = self.cpf
+        celular = self.celular
+        estado_civil = self.estado_civil
+        estado = self.estado
+        cidade = self.cidade
+        email = self.email
+        facebook = self.facebook
+        telefones_urgencia = self.telefones_urgencia
+        pessoa_convite_enct = self.pessoa_convite_enct
+        telefone_pessoa_convite = self.telefone_pessoa_convite
+        desejo_participacao = self.desejo_participacao
+        pergunta_jesus = self.pergunta_jesus
+        msg = 'Nome: {0}\n'\
+              'Celular: {1}\nData de nascimento: {2}\n'\
+              'CPF: {3}\nEstado civil: {4}\n'\
+              'Facebook: {5}\nCidade: {6}\nEstado: {7}\n '\
+              'Telefones de emergência: {8}\nQuem o convidou: {9}\nTelefone de quem o convidou: {10}\n'\
+              'Porque deseja participar do programa: {11}\nQuem é Jesus para você: {12}\n'\
+            .format(nome_apelido, celular, data_nascimento_enc, cpf, estado_civil, facebook,
+                    cidade, estado, telefones_urgencia, pessoa_convite_enct,
+                    telefone_pessoa_convite, desejo_participacao, pergunta_jesus)
+        super(Encontrista, self).save(*args, **kwargs)
+        send_mail(
+            'INSCRIÇÃO ENCONTRISTA - RJC 2020',
+            'Recebemos seus dados em nosso banco de dados\n' + msg + '\n\nPara concluir a inscrição, por favor efetuar o pagamento\n'
+                                                                     'Dados bancários: \n'
+                                                                     'Agência: 0768\nTipo de conta: 013\nConta: 00045215-5\n'
+                                                                     'Banco Caixa Econômica Federal\n'
+                                                                     'Favorecida: Jessica Aline Souza Lima\n'
+                                                                     'Informações importantes: Não serão aceitos depósitos em envelopes, sob pena de não ser reconhecida a inscrição\n'
+                                                                     'Depósitos apenas no terminal eletrônico, lotéricas e/ou transferências bancárias\n\n\n'
+                                                                     'Att: Equipe de direção geral - RJC 2020',
+            'rjcsantaines@gmail.com',
+            [email],
+            fail_silently=False,
+        )
 
     def __str__(self):
         return self.nome_apelido
