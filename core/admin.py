@@ -27,6 +27,7 @@ class EquipeAdmin(ImportExportModelAdmin):
 
 class CirculoAdmin(ImportExportModelAdmin):
     list_display = ['nome_circulo', 'get_encontristas', 'qtd_participantes', 'lider_circulo', 'cor_equipe']
+    fields = ('nome_circulo', 'encontristas')
 
 
 class ContatoAdmin(ImportExportModelAdmin):
