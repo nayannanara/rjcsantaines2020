@@ -13,7 +13,7 @@ class Encontreiro(models.Model):
     cep_encontreiro = models.CharField('CEP', null=True, max_length=11)
     naturalidade_encontreiro = models.CharField('Naturalidade', null=True, max_length=50)
     logradouro_encontreiro = models.CharField('Logradouro', null=True, blank=True, max_length=40)
-    numero_encontreiro = models.IntegerField('Numero', null=True)
+    numero_encontreiro = models.CharField('Numero', null=True, max_length=10)
     complemento_encontreiro = models.CharField('Complemento', null=True, blank=True, max_length=60)
     bairro_encontreiro = models.CharField('Bairro', null=True, blank=True, max_length=40)
     estado_encontreiro = models.CharField('Estado', null=True, max_length=26)
@@ -22,11 +22,11 @@ class Encontreiro(models.Model):
     nome_igreja = models.CharField('Nome da igreja', null=True, max_length=50)
     local_trabalho_enc = models.CharField('Local de trabalho', null=True, blank=True, max_length=40)
     escolaridade_enc = models.CharField('Escolaridade', null=True, blank=True, max_length=40)
-    pessoa_convite_enc = models.CharField('Padrinho ou madrinha', null=True, max_length=30)
+    pessoa_convite_enc = models.CharField('Padrinho ou madrinha', null=True, max_length=60)
     ano_participacao = models.IntegerField('Ano de participação', null=True)
     equipes_trab = models.CharField('Equipes que já trabalhou', null=True, max_length=70)
     curso_encontreiro = models.CharField('Curso', max_length=70, null=True, blank=True)
-    qtd_participacoes = models.IntegerField('Quantidade de participações', null=True)
+    qtd_participacoes = models.CharField('Quantidade de participações', null=True, max_length=20)
 
     STATUS_CHOICES = (
         (0, 'Aguardando Pagamento'),
@@ -76,7 +76,7 @@ class Encontreiro(models.Model):
             'Dados bancários: \n'
             'Agência: 0768\nTipo de conta: 013\nConta: 00045215-5\n'
             'Banco Caixa Econômica Federal\n'
-            'Favorecida: Jessica Aline Souza Lima\n'
+            'Favorecida: Jessica Aline Lima Soares\n'
             'Informações importantes: Não serão aceitos depósitos em envelopes, sob pena de não ser reconhecida a inscrição\n'
             'Depósitos apenas de forma direta "boca do caixa", lotéricas e/ou transferências bancárias\n\n\n'
             'Att: Equipe de direção geral - RJC 2020',
@@ -97,7 +97,7 @@ class Encontrista(models.Model):
     estado_civil = models.CharField('Estado civil', null=True, max_length=40)
     cep = models.CharField('CEP', null=True, max_length=10)
     logradouro = models.CharField('Logradouro', null=True, blank=True, max_length=40)
-    numero = models.IntegerField('Numero', null=True)
+    numero = models.CharField('Numero', null=True, max_length=10)
     complemento = models.CharField('Complemento', null=True, blank=True, max_length=60)
     bairro = models.CharField('Bairro', null=True, blank=True, max_length=25)
     estado = models.CharField('Estado', null=True, max_length=4)
@@ -112,13 +112,13 @@ class Encontrista(models.Model):
     nome_mae = models.CharField('Nome da mãe', null=True, max_length=60)
     religiao_mae = models.CharField('Religião da mãe', null=True, blank=True, max_length=30)
     possui_automovel = models.CharField('Possui automóvel?', null=True, max_length=5)
-    pessoas_moradia = models.CharField('Quem mora na mesma residência', null=True, max_length=60)
-    local_trabalho = models.CharField('Local de trabalho', null=True, blank=True, max_length=40)
+    pessoas_moradia = models.CharField('Quem mora na mesma residência', null=True, max_length=70)
+    local_trabalho = models.CharField('Local de trabalho', null=True, blank=True, max_length=50)
     nome_escola = models.CharField('Nome da escola', null=True, blank=True, max_length=60)
     escolaridade = models.CharField('Escolaridade', null=True, blank=True, max_length=40)
     curso = models.CharField('Curso', null=True, blank=False, max_length=50)
     pessoas_participando = models.CharField('Algum conhecido participando do programa?', null=True, max_length=5)
-    nome_pessoas_participando = models.CharField('Nome das pessoas', null=True, blank=True, max_length=60)
+    nome_pessoas_participando = models.CharField('Nome das pessoas', null=True, blank=True, max_length=70)
     possui_probsaude = models.CharField('Possui algum problema de saúde?', null=True, max_length=5)
     nome_probsaude = models.CharField('Qual problema de saúde', null=True, blank=True, max_length=60)
     telefones_urgencia = models.CharField('Telefones para urgência', null=True, max_length=40)
@@ -169,7 +169,7 @@ class Encontrista(models.Model):
                                                                      'Dados bancários: \n'
                                                                      'Agência: 0768\nTipo de conta: 013\nConta: 00045215-5\n'
                                                                      'Banco Caixa Econômica Federal\n'
-                                                                     'Favorecida: Jessica Aline Souza Lima\n'
+                                                                     'Favorecida: Jessica Aline Lima Soares\n'
                                                                      'Informações importantes: Não serão aceitos depósitos em envelopes, sob pena de não ser reconhecida a inscrição\n'
                                                                      'Depósitos apenas de forma direta "boca do caixa", lotéricas e/ou transferências bancárias\n\n\n'
                                                                      'Att: Equipe de direção geral - RJC 2020',
@@ -194,6 +194,14 @@ class Equipe(models.Model):
 
     def get_encontreiros(self):
         return '\n'.join([str(p) for p in self.encontreiros.all()])
+
+
+class EquipeAzul(models.Model):
+    encontrista = models.ForeignKey(Encontrista, on_delete=models.CASCADE, related_name='encontrista', blank=False)
+    lider_circulo = models.ForeignKey(Encontreiro, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return str(self.encontristas)
 
 
 class Circulo(models.Model):
