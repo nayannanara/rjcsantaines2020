@@ -16,6 +16,7 @@ class EncontreiroAdmin(ImportExportModelAdmin):
     list_display = ('nome', 'cpf', 'email', 'data_nascimento', 'celular', 'data_cadastro', 'status')
     list_filter = ['data_cadastro', 'status']
     list_per_page = 50
+    ordering = ['nome']
 
 
 class EncontristaAdmin(ImportExportModelAdmin):
@@ -23,6 +24,7 @@ class EncontristaAdmin(ImportExportModelAdmin):
     list_display = ('nome_apelido', 'cpf', 'email', 'data_nascimento_enc', 'celular', 'data_cadastro', 'status')
     list_filter = ['data_cadastro', 'status']
     list_per_page = 50
+    ordering = ['nome_apelido']
 
 
 class EquipeAdmin(ImportExportModelAdmin):
