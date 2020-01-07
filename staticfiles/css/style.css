@@ -2,6 +2,26 @@
 .navbar-light .navbar-toggler-icon{
  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
+
+.contagem {
+  color: #333;
+  text-align: center;
+  padding: 75px;
+}
+
+
+.regressiva li {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  /*padding: 1em;*/
+  text-transform: uppercase;
+}
+
+.regressiva li span {
+  display: block;
+  font-size: 4.5rem;
+}
 #cardevento{
     border: 1px solid #f2f3f5 !important;
     margin-top: 50px;
@@ -188,13 +208,24 @@ hr{
     width: 70px !important;
     margin:0; 
 }
+p {
+    margin-top: 0;
+    margin-bottom: 0 !important;
+}
 #textosobre{
     margin-top: 70px;
 }
 #sobrenos h3{
     margin-top: 50px;
 }
+#inscricoes{
+    padding-bottom: 70px;
+    padding-top: 70px;
+}
 #inscricoes h3{
+    margin-top: 50px;
+}
+#contagem h3{
     margin-top: 50px;
 }
 #row-inscricao{
@@ -359,7 +390,7 @@ i {
 }
 
 .container .card .face.face2 .content h3 {
-    margin: 50px 0 20px 0;
+    margin: 20px 0 0 0;
     padding: 0;
     color: #fff;
     font-size: 24px;
@@ -442,3 +473,5 @@ i {
 	  border-top-left-radius: 0;
 	  border-top-right-radius: 0;
 	}
+
+
