@@ -20,7 +20,7 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.7
 python-decouple==3.3
 pytz==2019.3
-PyYAML==5.1.2
+PyYAML==5.4
 rsa==4.0
 six==1.13.0
 sqlparse==0.3.0
