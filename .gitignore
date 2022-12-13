@@ -133,8 +133,6 @@ dmypy.json
 staging.env
 prod.env
 
-static/
-
 # Use docker-compose override
 # much like the .env
 # for resolve your own docker issues
