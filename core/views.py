@@ -31,34 +31,33 @@ def encontreiro_novo(request):
     if request.method == 'POST':
         encontreiro = {}
         encontreiro['nome'] = request.POST.get('nome')
-        encontreiro['data_nascimento'] = request.POST.get('data_nascimento')
+        encontreiro['idade'] = request.POST.get('idade')
         encontreiro['cpf'] = request.POST.get('cpf')
         encontreiro['celular'] = request.POST.get('celular')
         encontreiro['email'] = request.POST.get('email')
         encontreiro['estado_civil'] = request.POST.get('estado_civil')
         encontreiro['cep_encontreiro'] = request.POST.get('cep_encontreiro')
         encontreiro['logradouro_encontreiro'] = request.POST.get('logradouro_encontreiro')
-        encontreiro['facebook'] = request.POST.get('facebook')
         encontreiro['numero_encontreiro'] = request.POST.get('numero_encontreiro')
         encontreiro['complemento_encontreiro'] = request.POST.get('complemento_encontreiro')
         encontreiro['bairro_encontreiro'] = request.POST.get('bairro_encontreiro')
         encontreiro['estado_encontreiro'] = request.POST.get('estado_encontreiro')
         encontreiro['cidade_encontreiro'] = request.POST.get('cidade_encontreiro')
-        encontreiro['naturalidade_encontreiro'] = request.POST.get('naturalidade_encontreiro')
         encontreiro['email'] = request.POST.get('email')
         encontreiro['frequentando_igreja_enc'] = request.POST.get('frequentando_igreja_enc')
         encontreiro['nome_igreja'] = request.POST.get('nome_igreja')
-        encontreiro['local_trabalho_enc'] = request.POST.get('local_trabalho_enc')
-        encontreiro['escolaridade_enc'] = request.POST.get('escolaridade_enc')
-        encontreiro['curso_encontreiro'] = request.POST.get('curso_encontreiro')
         encontreiro['pessoa_convite_enc'] = request.POST.get('pessoa_convite_enc')
         encontreiro['ano_participacao'] = request.POST.get('ano_participacao')
         encontreiro['equipes_trab'] = request.POST.get('equipes_trab')
         encontreiro['qtd_participacoes'] = request.POST.get('qtd_participacoes')
+        encontreiro['doenca_cardiaca'] = request.POST.get('doenca_cardiaca')
+        encontreiro['diabetico'] = request.POST.get('diabetico')
+        encontreiro['hipertenso'] = request.POST.get('hipertenso')
+        encontreiro['observacoes_gerais'] = request.POST.get('observacoes_gerais')
 
         Encontreiro.objects.create(**encontreiro)
         success = True
-    elif request.method == 'POST':
+    elif request.method == 'GET':
         messages.error(request, 'Formulário inválido')
     context = {
         'success': success
@@ -78,7 +77,6 @@ def encontrista_novo(request):
         encontrista['estado_civil'] = request.POST.get('estado_civil')
         encontrista['cep'] = request.POST.get('cep')
         encontrista['logradouro'] = request.POST.get('logradouro')
-        encontrista['facebook'] = request.POST.get('facebook')
         encontrista['numero'] = request.POST.get('numero')
         encontrista['complemento'] = request.POST.get('complemento')
         encontrista['bairro'] = request.POST.get('bairro')
@@ -94,22 +92,29 @@ def encontrista_novo(request):
         encontrista['religiao_mae'] = request.POST.get('religiao_mae')
         encontrista['possui_automovel'] = request.POST.get('possui_automovel')
         encontrista['pessoas_moradia'] = request.POST.get('pessoas_moradia')
-        encontrista['local_trabalho'] = request.POST.get('local_trabalho')
-        encontrista['nome_escola'] = request.POST.get('nome_escola')
-        encontrista['escolaridade'] = request.POST.get('escolaridade')
-        encontrista['curso'] = request.POST.get('curso')
         encontrista['pessoas_participando'] = request.POST.get('pessoas_participando')
-        encontrista['possui_probsaude'] = request.POST.get('possui_probsaude')
+        encontrista['problema_saude'] = request.POST.get('problema_saude')
         encontrista['nome_probsaude'] = request.POST.get('nome_probsaude')
         encontrista['telefones_urgencia'] = request.POST.get('telefones_urgencia')
         encontrista['pessoa_convite_enct'] = request.POST.get('pessoa_convite_enct')
         encontrista['telefone_pessoa_convite'] = request.POST.get('telefone_pessoa_convite')
         encontrista['desejo_participacao'] = request.POST.get('desejo_participacao')
         encontrista['pergunta_jesus'] = request.POST.get('pergunta_jesus')
+        encontrista['alergia'] = request.POST.get('alergia')
+        encontrista['nome_alergia'] = request.POST.get('nome_alergia')
+        encontrista['diabetico'] = request.POST.get('diabetico')
+        encontrista['hipertenso'] = request.POST.get('hipertenso')
+        encontrista['cardiaco'] = request.POST.get('cardiaco')
+        encontrista['intolerancia'] = request.POST.get('intolerancia')
+        encontrista['remedio_especifico'] = request.POST.get('remedio_especifico')
+        encontrista['nome_remedios'] = request.POST.get('nome_remedios')
+        encontrista['tamanho_camisa'] = request.POST.get('tamanho_camisa')
+        encontrista['observacoes_gerais'] = request.POST.get('observacoes_gerais')
+        encontrista['nome_pessoas_participando'] = request.POST.get('nome_pessoas_participando')
 
         Encontrista.objects.create(**encontrista)
         success = True
-    elif request.method == 'POST':
+    elif request.method == 'GET':
         messages.error(request, 'Formulário inválido')
     context = {
         'success': success,

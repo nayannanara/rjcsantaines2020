@@ -19,7 +19,7 @@ const second = 1000,
       hour = minute * 60,
       day = hour * 24;
 
-let countDown = new Date('01/17/2020 19:00:00').getTime(),
+let countDown = new Date('01/13/2023 19:00:00').getTime(),
     x = setInterval(function() {
 
       let now = new Date().getTime(),

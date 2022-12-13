@@ -3,17 +3,14 @@ from import_export.admin import ImportExportModelAdmin
 from .models import(
     Encontreiro,
     Encontrista,
-    Equipe,
-    Circulo,
     Contato,
-    EquipeAzul
 
 )
 
 
 class EncontreiroAdmin(ImportExportModelAdmin):
-    search_fields = ('nome', 'cpf', 'email', 'data_nascimento', 'celular', 'data_cadastro', 'status')
-    list_display = ('nome', 'cpf', 'email', 'data_nascimento', 'celular', 'data_cadastro', 'status')
+    search_fields = ('nome', 'cpf', 'email', 'idade', 'celular', 'data_cadastro', 'status')
+    list_display = ('nome', 'cpf', 'email', 'idade', 'celular', 'data_cadastro', 'status')
     list_filter = ['data_cadastro', 'status']
     list_per_page = 50
     ordering = ['nome']
@@ -52,7 +49,4 @@ class EquipeAzulAdmin(ImportExportModelAdmin):
 
 admin.site.register(Encontreiro, EncontreiroAdmin)
 admin.site.register(Encontrista, EncontristaAdmin)
-#admin.site.register(Equipe, EquipeAdmin)
-#admin.site.register(Circulo, CirculoAdmin)
 admin.site.register(Contato, ContatoAdmin)
-admin.site.register(EquipeAzul, EquipeAzulAdmin)
