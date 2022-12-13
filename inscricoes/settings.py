@@ -9,7 +9,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*', 'localhost', '177.93.128.11', 'rjc-santaines']
+ALLOWED_HOSTS = ['*', 'localhost', '177.93.128.11', 'rjc-santaines.tk']
 
 # Application definition
 
