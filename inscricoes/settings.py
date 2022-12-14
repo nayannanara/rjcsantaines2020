@@ -9,7 +9,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*', 'localhost', '177.93.128.11', 'rjc-santaines.tk']
+ALLOWED_HOSTS = ['*', 'localhost', '177.93.128.11', 'rjcsantaines']
 
 # Application definition
 
@@ -105,11 +105,16 @@ USE_TZ = True
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_PORT = '2525'
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.mailtrap.io'
+# EMAIL_PORT = '2525'
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
+MAILJET_API_KEY = config('MJ_APIKEY_PUBLIC')
+MAILJET_API_SECRET = config('MJ_APIKEY_PRIVATE')
+
 
 from django.contrib.messages import constants as messages_constants
 MESSAGE_TAGS = {

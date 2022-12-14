@@ -48,7 +48,7 @@ def encontreiro_novo(request):
         encontreiro['nome_igreja'] = request.POST.get('nome_igreja')
         encontreiro['pessoa_convite_enc'] = request.POST.get('pessoa_convite_enc')
         encontreiro['ano_participacao'] = request.POST.get('ano_participacao')
-        encontreiro['equipes_trab'] = request.POST.get('equipes_trab')
+        encontreiro['equipe_participar'] = request.POST.get('equipe_participar')
         encontreiro['qtd_participacoes'] = request.POST.get('qtd_participacoes')
         encontreiro['doenca_cardiaca'] = request.POST.get('doenca_cardiaca')
         encontreiro['diabetico'] = request.POST.get('diabetico')

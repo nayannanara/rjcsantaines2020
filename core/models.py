@@ -29,7 +29,7 @@ class Encontreiro(models.Model):
 
     pessoa_convite_enc = models.CharField('Padrinho ou madrinha', max_length=60)
     ano_participacao = models.IntegerField('Ano de participação')
-    equipes_trab = models.CharField('Equipes que já trabalhou', max_length=255)
+    equipe_participar = models.CharField('Equipe que deseja trabalhar?', null=True, max_length=255)
     qtd_participacoes = models.IntegerField('Quantidade de participações')
 
     status = models.IntegerField(
@@ -53,7 +53,7 @@ class Encontreiro(models.Model):
         nome_igreja = self.nome_igreja
         pessoa_convite_enc = self.pessoa_convite_enc
         ano_participacao = self.ano_participacao
-        equipes_trab = self.equipes_trab
+        equipe_participar = self.equipe_participar
         qtd_participacoes = self.qtd_participacoes
         observacoes_gerais = self.observacoes_gerais
         doenca_cardiaca = self.doenca_cardiaca
@@ -87,7 +87,7 @@ class Encontreiro(models.Model):
                 nome_igreja, 
                 pessoa_convite_enc,
                 ano_participacao, 
-                equipes_trab,
+                equipe_participar,
                 qtd_participacoes,
                 'Sim' if doenca_cardiaca else 'Não',
                 'Sim' if diabetico else 'Não',
@@ -103,7 +103,7 @@ class Encontreiro(models.Model):
             'Favorecido: Elson da Silva Lima\n'
             'Banco: C6 Bank\n\n'
             'Att: Equipe de Direção Geral - RJC 2023',
-            from_email='rjcsantaines@gmail.com',
+            from_email='secretariarjcsa@gmail.com',
             recipient_list=[email],
             fail_silently=False,
         )
@@ -217,7 +217,7 @@ class Encontrista(models.Model):
             'Favorecido: Elson da Silva Lima\n'
             'Banco: C6 Bank\n\n'
             'Att: Equipe de Direção Geral - RJC 2023',
-            from_email='rjcsantaines@gmail.com',
+            from_email='secretariarjcsa@gmail.com',
             recipient_list=[email],
             fail_silently=False,
         )
@@ -270,8 +270,8 @@ class Contato(models.Model):
         send_mail(
             'NOVO CONTATO - RJC SANTA INÊS',
             msg,
-            'rjcsantaines@gmail.com',
-            ['nayanna501@gmail.com'],
+            'secretariarjcsa@gmail.com',
+            ['secretariarjcsa@gmail.com'],
             fail_silently=False,
         )
 

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 from .models import(
+    Circulo,
     Encontreiro,
     Encontrista,
     Contato,
@@ -50,3 +51,4 @@ class EquipeAzulAdmin(ImportExportModelAdmin):
 admin.site.register(Encontreiro, EncontreiroAdmin)
 admin.site.register(Encontrista, EncontristaAdmin)
 admin.site.register(Contato, ContatoAdmin)
+admin.site.register(Circulo, CirculoAdmin)
