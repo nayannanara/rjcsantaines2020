@@ -121,10 +121,15 @@ class Encontrista(models.Model):
 
     TAMANHO_CHOICES = (
         ('P', 'P'),
+        ('PB', 'PB'),
         ('PP', 'PP'),
+        ('PPB', 'PPB'),
         ('M', 'M'),
+        ('MB', 'MB'),
         ('G', 'G'),
+        ('GB', 'GB'),
         ('GG', 'GG'),
+        ('GGB', 'GGB'),
     )
 
     nome_apelido = models.CharField('Nome apelido', null=True, max_length=60)
@@ -170,7 +175,7 @@ class Encontrista(models.Model):
     pessoa_convite_enct = models.CharField('Quem o convidou?', null=True, max_length=40)
     telefone_pessoa_convite = models.CharField('Telefone do encontreiro', null=True, max_length=40)
     desejo_participacao = models.TextField('Porque deseja participar do programa?', null=True)
-    pergunta_jesus = models.TextField('Quem é Jesus para você?', null=True)
+    pergunta_jesus = models.TextField('Quem é Jesus para você?', null=True, blank=True)
     tamanho_camisa = models.CharField(choices=TAMANHO_CHOICES, max_length=3)
     observacoes_gerais = models.TextField('Observações Gerais', null=True)
 
