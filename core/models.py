@@ -39,7 +39,7 @@ class Encontreiro(models.Model):
     diabetico = models.BooleanField('É diabético', default=False)
     hipertenso = models.BooleanField('É hipertenso', default=False)
     data_cadastro = models.DateTimeField('Inscrito em', auto_now=True)
-    observacoes_gerais = models.TextField('Observações Gerais', null=True)
+    observacoes_gerais = models.TextField('Observações Gerais', null=True, blank=True)
 
     def save(self, *args, **kwargs):
         nome = self.nome
@@ -56,9 +56,6 @@ class Encontreiro(models.Model):
         equipe_participar = self.equipe_participar
         qtd_participacoes = self.qtd_participacoes
         observacoes_gerais = self.observacoes_gerais
-        doenca_cardiaca = self.doenca_cardiaca
-        diabetico = self.diabetico
-        hipertenso = self.hipertenso
 
         msg = 'Nome: {0}\n'\
               'Celular: {1}\n'\
@@ -72,10 +69,7 @@ class Encontreiro(models.Model):
               'Ano que participou: {9}\n'\
               'Equipes que trabalhou: {10}\n'\
               'Quantidade de participações: {11}\n'\
-            'Possui alguma doença cardíaca: {12}\n'\
-            'É diabético (a): {12}\n'\
-            'É hipertenso (a): {13}\n'\
-            'Observações gerais: {14}'\
+            'Observações gerais: {12}'\
             .format(
                 nome, 
                 celular, 
@@ -89,9 +83,6 @@ class Encontreiro(models.Model):
                 ano_participacao, 
                 equipe_participar,
                 qtd_participacoes,
-                'Sim' if doenca_cardiaca else 'Não',
-                'Sim' if diabetico else 'Não',
-                'Sim' if hipertenso else 'Não',
                 observacoes_gerais
             )
         super(Encontreiro, self).save(*args, **kwargs)
@@ -177,7 +168,7 @@ class Encontrista(models.Model):
     desejo_participacao = models.TextField('Porque deseja participar do programa?', null=True)
     pergunta_jesus = models.TextField('Quem é Jesus para você?', null=True, blank=True)
     tamanho_camisa = models.CharField(choices=TAMANHO_CHOICES, max_length=3)
-    observacoes_gerais = models.TextField('Observações Gerais', null=True)
+    observacoes_gerais = models.TextField('Observações Gerais', null=True, blank=True)
 
     status = models.IntegerField(
         'Situação', choices=STATUS_CHOICES, default=0, blank=True
