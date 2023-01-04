@@ -105,7 +105,7 @@
         </div>
     </section>
 
-    {% comment %} <section class="container">
+    <section class="container">
         <div id="valores" style="margin-top: 80px">
             <h3><b>VALORES DAS INSCRIÇÕES</b></h3>
             <hr>
@@ -160,7 +160,7 @@
         <div class="row" id="row-inscricao">
           <div class="nav flex-column nav-pills col-md-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <a class="nav-link active" id="inscricao-encontreiro" data-toggle="pill" href="#encontreiro" role="tab" aria-controls="v-pills-home" aria-selected="true">Encontreiro</a>
-              <a class="nav-link" id="inscricao-encontrista" data-toggle="pill" href="#encontrista" role="tab" aria-controls="v-pills-profile" aria-selected="false">Encontrista</a>
+              {% comment %} <a class="nav-link" id="inscricao-encontrista" data-toggle="pill" href="#encontrista" role="tab" aria-controls="v-pills-profile" aria-selected="false">Encontrista</a> {% endcomment %}
             </div>
             <div class="tab-content col-md-8" id="v-pills-tabContent">
               <div class="tab-pane fade show active" id="encontreiro" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -334,6 +334,8 @@
                 </form>
 
                 </div>
+              </div>
+                {% comment %}
               <div class="tab-pane fade" id="encontrista" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 
                 <form action="{% url 'core_encontrista_novo' %}" method="post">
@@ -657,7 +659,7 @@
         </div>
     </div>
     </section> {% endcomment %}
-    <section class="container">
+    {% comment %} <section class="container">
       <div id="inscricoes">
           <h3><b>INSCRIÇÕES</b></h3>
           <hr>
@@ -666,7 +668,7 @@
           <br>
           <h4 style="text-align: center;">INSCRIÇÕES ENCERRADAS!!</h4>
       </div>
-  </section>
+  </section> {% endcomment %}
     <section class="container">
       <div id="contagem">
         <h3><b>CONTAGEM REGRESSIVA</b></h3>
